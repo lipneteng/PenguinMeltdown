@@ -34,7 +34,7 @@ public:
 	UPROPERTY(EditAnywhere)
 		float PenguinTakeRadius = 100.0f;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY()
 		int32 PenguinLimit = 2;
 
 	//Power mod

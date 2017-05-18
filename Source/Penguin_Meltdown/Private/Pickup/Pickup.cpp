@@ -26,7 +26,7 @@ APickup::APickup()
 		Mesh->SetStaticMesh(MeshRef.Object);
 	}
 
-	static ConstructorHelpers::FObjectFinder<USoundBase> SoundTakingRef(TEXT("SoundWave'/Game/Audio/Pickups/Bonus.Bonus'"));
+	static ConstructorHelpers::FObjectFinder<USoundBase> SoundTakingRef(TEXT("SoundWave'/Game/Audio/Pickups/S_Bonus.S_Bonus'"));
 	if (SoundTakingRef.Object)
 	{
 		TakingSound = SoundTakingRef.Object;
