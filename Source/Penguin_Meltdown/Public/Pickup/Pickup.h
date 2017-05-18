@@ -28,6 +28,9 @@ public:
 	UPROPERTY()
 		APlayerPawn_Polar* Polar = nullptr;
 
+	UPROPERTY(EditAnywhere)
+		USoundBase* TakingSound;
+
 protected:
 
 	// Called when the game starts or when spawned
@@ -40,5 +43,7 @@ public:
 	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 
 	virtual void TakePickup();
+
+	void MakeTakingSound();
 
 };

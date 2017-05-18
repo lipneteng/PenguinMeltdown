@@ -63,7 +63,7 @@ void APenguin::SetPenguinType(EPenguinType Type)
 	}
 }
 
-EPenguinType APenguin::GetPenguinType()
+EPenguinType APenguin::GetPenguinType() const
 {
 	return PenguinType;
 }
@@ -80,6 +80,7 @@ bool APenguin::SetPolarControl(bool Control)
 			IcelandRef->SetState(EIcelandState::Free);
 			bIsPolarControl = true;
 			SetActorEnableCollision(false);
+			MakeTakingSound();
 			return true;
 		}
 	}
@@ -95,6 +96,7 @@ bool APenguin::SetPolarControl(bool Control)
 			SetActorEnableCollision(true);
 			SetActorLocation(IcelandRef->GetActorLocation() + FVector(0, 0, 50.0f));
 			AttachToActor(IcelandRef, FAttachmentTransformRules::KeepWorldTransform);
+			MakeTakingSound();
 			return true;
 		}
 	}
@@ -122,7 +124,12 @@ AIceland* APenguin::CheckIcelandUnderPenguin()
 	return nullptr;
 }
 
-bool APenguin::IsPolarControlled()
+bool APenguin::IsPolarControlled() const
 {
 	return bIsPolarControl;
+}
+
+void APenguin::MakeTakingSound()
+{
+	UGameplayStatics::PlaySoundAtLocation(this, TakingSound, GetActorLocation());
 }

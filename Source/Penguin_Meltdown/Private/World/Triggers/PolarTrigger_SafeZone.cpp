@@ -37,6 +37,8 @@ void APolarTrigger_SafeZone::ActivateTrigger()
 				{
 					EPenguinType PenguinsType = Penguins[0]->GetPenguinType();
 					WorldKeeper->AddScorePoints(PenguinsType);
+					MakeScoreSound();
+
 					PolarRef->ClearPenguins();
 				}
 				else
@@ -46,5 +48,10 @@ void APolarTrigger_SafeZone::ActivateTrigger()
 			}
 			break;
 	}
+}
+
+void APolarTrigger_SafeZone::MakeScoreSound()
+{
+	UGameplayStatics::PlaySoundAtLocation(this, ScoreSound, GetActorLocation());
 }
 

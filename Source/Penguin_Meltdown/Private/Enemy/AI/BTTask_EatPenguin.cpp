@@ -48,7 +48,9 @@ EBTNodeResult::Type UBTTask_EatPenguin::ExecuteTask(UBehaviorTreeComponent& Owne
 			{
 				PenguinRef->Destroy();
 			}
-			//Play sound here
+
+			SealRef->MakeEatingSound();
+
 			return EBTNodeResult::Succeeded;
 		}
 	}

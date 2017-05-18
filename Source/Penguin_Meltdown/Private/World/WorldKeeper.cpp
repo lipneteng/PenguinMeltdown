@@ -22,6 +22,7 @@ AWorldKeeper::AWorldKeeper()
 void AWorldKeeper::BeginPlay()
 {
 	Super::BeginPlay();
+	PlayBackgroundMusic();
 }
 
 // Called every frame
@@ -30,6 +31,11 @@ void AWorldKeeper::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	CalculateTime(DeltaTime);
+}
+
+void AWorldKeeper::PlayBackgroundMusic()
+{
+	UGameplayStatics::PlaySound2D(this, BackgroundMusic);
 }
 
 void AWorldKeeper::AddScorePoints(EPenguinType PenguinsType)

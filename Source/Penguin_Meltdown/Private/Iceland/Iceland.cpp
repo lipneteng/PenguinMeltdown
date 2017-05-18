@@ -43,10 +43,7 @@ void AIceland::Tick(float DeltaTime)
 
 void AIceland::MoveToBorder(float Delta)
 {
-	FVector Direction = FVector(0.0f, 1.0f, 0.0f);
 	FVector NewLocation = GetActorLocation() + Direction * GetSpeed() * Delta;
-
-	UE_LOG(LogTemp, Warning, TEXT("Speed is : %f"), GetSpeed());
 	SetActorLocation(NewLocation);
 }
 
@@ -55,9 +52,19 @@ void AIceland::SetSpeed(float SpeedValue)
 	Speed = SpeedValue;
 }
 
-const float AIceland::GetSpeed()
+float AIceland::GetSpeed() const
 {
 	return Speed;
+}
+
+void AIceland::SetDirection(FVector DirectionValue)
+{
+	Direction = DirectionValue;
+}
+
+FVector AIceland::GetDirection() const
+{
+	return Direction;
 }
 
 void AIceland::SetState(EIcelandState NewState)
@@ -65,7 +72,7 @@ void AIceland::SetState(EIcelandState NewState)
 	State = NewState;
 }
 
-const EIcelandState AIceland::GetState()
+EIcelandState AIceland::GetState() const
 {
 	return State;
 }
@@ -75,7 +82,7 @@ void AIceland::SetActorOnIceland(AActor* ActorRef)
 	ActorOnIceland = ActorRef;
 }
 
-AActor* AIceland::GetActorOnIceland()
+AActor* AIceland::GetActorOnIceland() const
 {
 	return ActorOnIceland;
 }
@@ -85,7 +92,7 @@ void AIceland::SetNumberXLine(int32 NumXLine)
 	NumberXLine = NumXLine;
 }
 
-const int32 AIceland::GetNumberXLine()
+int32 AIceland::GetNumberXLine() const
 { 
 	return NumberXLine; 
 }

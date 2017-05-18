@@ -47,7 +47,8 @@ public:
 	UPROPERTY(EditAnywhere)
 		TSubclassOf<class UEndGameMessageWidget> EndGameMessageClass;
 
-
+	UPROPERTY(EditAnywhere)
+		USoundBase* BackgroundMusic;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -72,6 +73,8 @@ public:
 	void ClearMessageOnScreen();
 
 	bool CheckMessageOnScreen();
+
+	void PlayBackgroundMusic();
 
 	//Delegate for pause(time dilation)
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FTimeIsPaused, float, TimeDilValue);

@@ -20,6 +20,7 @@ ASeal::ASeal()
 void ASeal::BeginPlay()
 {
 	Super::BeginPlay();
+	GetWorld()->GetTimerManager().SetTimer(MovingSoundTimer, this, &ASeal::MakeMovingSound, MovingSoundPlayRate, true);
 }
 
 // Called every frame
@@ -57,7 +58,18 @@ void ASeal::OnKilled()
 	}
 }
 
-const bool ASeal::IsDead()
+bool ASeal::IsDead() const
 {
 	return bIsDead;
+}
+
+
+void ASeal::MakeMovingSound()
+{
+	UGameplayStatics::PlaySoundAtLocation(this, MovingSound, GetActorLocation());
+}
+
+void ASeal::MakeEatingSound()
+{
+	UGameplayStatics::PlaySoundAtLocation(this, EatingSound, GetActorLocation());
 }

@@ -26,6 +26,12 @@ APickup::APickup()
 		Mesh->SetStaticMesh(MeshRef.Object);
 	}
 
+	static ConstructorHelpers::FObjectFinder<USoundBase> SoundTakingRef(TEXT("SoundWave'/Game/Audio/Pickups/Bonus.Bonus'"));
+	if (SoundTakingRef.Object)
+	{
+		TakingSound = SoundTakingRef.Object;
+	}
+
 	Mesh->SetWorldScale3D(FVector(0.5f, 0.5f, 0.5f));
 	Mesh->SetRelativeLocation(FVector(0.0f, 0.0f, -35.0f));
 }
@@ -47,10 +53,16 @@ void APickup::NotifyActorBeginOverlap(AActor* OtherActor)
 	if (APlayerPawn_Polar* Polar = Cast<APlayerPawn_Polar>(OtherActor))
 	{
 		TakePickup();
+		MakeTakingSound();
 		Destroy();
 	}
 }
 
 void APickup::TakePickup()
 {
+}
+
+void APickup::MakeTakingSound()
+{
+	UGameplayStatics::PlaySoundAtLocation(this, TakingSound, GetActorLocation());
 }

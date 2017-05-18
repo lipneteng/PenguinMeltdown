@@ -14,6 +14,9 @@ APlayerPawn_Polar::APlayerPawn_Polar()
 
 	Gun = CreateDefaultSubobject<USkeletalMeshComponent>("Gun");
 	Gun->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, "GunSocket");
+
+	StepsSoundComponent = CreateDefaultSubobject<UAudioComponent>("StepsSound");
+	StepsSoundComponent->SetActive(false);
 }
 
 // Called when the game starts or when spawned
@@ -26,7 +29,26 @@ void APlayerPawn_Polar::BeginPlay()
 void APlayerPawn_Polar::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	PlayStepsSound();
+
 	CalculateTimeUnderPower(DeltaTime);
+}
+
+void APlayerPawn_Polar::PlayStepsSound()
+{
+	float Velocity = 0.0f;
+	Velocity = GetCharacterMovement()->Velocity.Size();
+
+	if (Velocity == 0)
+	{
+		StepsSoundComponent->SetActive(false);
+	}
+
+	else
+	{
+		StepsSoundComponent->SetActive(true);
+	}
 }
 
 // Called to bind functionality to input
@@ -52,7 +74,6 @@ void APlayerPawn_Polar::TakePenguin()
 			PenguinRef->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform, SocketName);
 
 			UpdateSpeed();
-			// sound here
 		}
 	}
 }
@@ -234,9 +255,14 @@ void APlayerPawn_Polar::Attack()
 		SetActorRotation(RotateTo);
 
 		GetWorld()->SpawnActor<ABullet>(BulletClass, Gun->GetSocketLocation("Muzzle"), RotateTo);
-
+		MakeAttackSound();
 		DecBullets();
 
 		OnFireIsStarted.Broadcast();
 	}
+}
+
+void APlayerPawn_Polar::MakeAttackSound()
+{
+	UGameplayStatics::PlaySoundAtLocation(this, AttackSound, Gun->GetSocketLocation("Muzzle"));
 }

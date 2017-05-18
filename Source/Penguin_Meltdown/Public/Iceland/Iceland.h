@@ -39,16 +39,19 @@ public:
 	void MoveToBorder(float Delta);
 
 	void SetSpeed(float SpeedValue);
-	const float GetSpeed();
+	float GetSpeed() const;
+
+	void SetDirection(FVector DirectionValue);
+	FVector GetDirection() const;
 
 	void SetState(EIcelandState NewState);
-	const EIcelandState GetState();
+	EIcelandState GetState() const;
 	
 	void SetActorOnIceland(AActor* ActorRef);
-	AActor* GetActorOnIceland();
+	AActor* GetActorOnIceland() const;
 
 	void SetNumberXLine(int32 NumXLine);
-	const int32 GetNumberXLine();
+	int32 GetNumberXLine() const;
 
 	UFUNCTION()
 		void BindOnTimeIsPaused(float TimeDilValue);
@@ -58,12 +61,18 @@ public:
 
 private:
 	UPROPERTY()
-	float Speed = 100.0f;
+		float Speed = 100.0f;
 
 	UPROPERTY()
-	int32 NumberXLine = 0;
+		FVector Direction = FVector(0.0f, 1.0f, 0.0f);
 
-	EIcelandState State = EIcelandState::Free;
+	UPROPERTY()
+		EIcelandState State = EIcelandState::Free;
 
-	AActor* ActorOnIceland = nullptr;
+	UPROPERTY()
+		AActor* ActorOnIceland = nullptr;
+
+	UPROPERTY()
+		int32 NumberXLine = 0;
+	
 };

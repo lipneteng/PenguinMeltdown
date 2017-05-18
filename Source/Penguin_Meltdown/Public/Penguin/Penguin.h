@@ -38,6 +38,9 @@ public:
 	UPROPERTY(EditAnywhere)
 		UMaterialInterface* BlueMaterial;
 
+	UPROPERTY(EditAnywhere)
+		USoundBase* TakingSound;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -51,11 +54,13 @@ public:
 
 	//Get/Set for penguin type
 	void SetPenguinType(EPenguinType Type);
-	EPenguinType GetPenguinType();
+	EPenguinType GetPenguinType() const;
 
 	//Get/Set for polar take function
-	bool IsPolarControlled();
 	bool SetPolarControl(bool Control);
+	bool IsPolarControlled() const;
+
+	void MakeTakingSound();
 
 private:
 

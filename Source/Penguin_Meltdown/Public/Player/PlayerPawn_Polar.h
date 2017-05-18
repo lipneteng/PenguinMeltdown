@@ -21,6 +21,9 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
 		class USkeletalMeshComponent* Gun;
 
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite)
+		class UAudioComponent* StepsSoundComponent;
+
 	UPROPERTY(EditAnywhere)
 		TSubclassOf <class ABullet> BulletClass;
 
@@ -48,6 +51,9 @@ public:
 	//Dead
 	UPROPERTY(EditAnywhere)
 		FVector DefaultLocation = FVector::ZeroVector;
+
+	UPROPERTY(EditAnywhere)
+		USoundBase* AttackSound;
 
 protected:
 	// Called when the game starts or when spawned
@@ -81,6 +87,7 @@ private:
 public:
 	//Control 
 	void Attack();
+	void MakeAttackSound();
 
 	//Penguins
 	void TakePenguin();
@@ -98,6 +105,8 @@ public:
 
 	//Dead
 	void SetDefaultLocation();
+
+	void PlayStepsSound();
 
 	//Delegates
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FFireIsStarted);

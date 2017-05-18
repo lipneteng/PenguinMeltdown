@@ -79,7 +79,7 @@ AIceland* AEnemyGenerator::GetNearestIcelandToPolar()
 		}
 	}
 
-	return nullptr;
+	return IcelandRef;
 }
 
 void AEnemyGenerator::ClearEnemyAndSpawnNew(ASeal* Seal)

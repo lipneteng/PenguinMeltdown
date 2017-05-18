@@ -35,6 +35,7 @@ void AIcelandGenerator::OnConstruction(const FTransform& Transform)
 	{
 		CleanIceland();
 		DefaultLocations.Empty();
+
 		X = 0;
 		Y = 0;
 
@@ -51,9 +52,6 @@ void AIcelandGenerator::OnConstruction(const FTransform& Transform)
 				IcelandRef->SetSpeed(IcelandSpeed);
 				IcelandRef->AttachToActor(this, FAttachmentTransformRules::KeepWorldTransform);
 				IcelandRef->SetNumberXLine(j);
-
-				//UGameplayStatics::FinishSpawningActor(IcelandRef, SpawnTransform);
-				UE_LOG(LogTemp, Warning, TEXT("Speed is : %f"), IcelandRef->GetSpeed());
 
 				X += StepX;
 

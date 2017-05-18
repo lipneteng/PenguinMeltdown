@@ -17,4 +17,9 @@ class PENGUIN_MELTDOWN_API APolarTrigger_SafeZone : public APolarTrigger
 
 	UPROPERTY(EditAnywhere)
 		TArray <FString> InfoMessages = { "You don't have penguins!" , "You have only one penguin!" , "Wrong colors!" };
+
+	UPROPERTY(EditAnywhere)
+		USoundBase* ScoreSound;
+
+	void MakeScoreSound();
 };
