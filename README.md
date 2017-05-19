@@ -35,3 +35,5 @@ Code and game architecture: Lipatov Alexey (https://www.youtube.com/channel/UCLp
 2D Design,UI - Utina Anastasia (https://www.artstation.com/artist/ustya)
 
 3D Artists - Shkarbanenko Kirill, Nuranov Vlad
+
+Sound Design - Berezhnoy Gennady (https://soundcloud.com/igni5)
