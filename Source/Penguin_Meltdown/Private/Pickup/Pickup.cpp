@@ -50,8 +50,10 @@ void APickup::Tick(float DeltaTime)
 
 void APickup::NotifyActorBeginOverlap(AActor* OtherActor)
 {
-	if (APlayerPawn_Polar* Polar = Cast<APlayerPawn_Polar>(OtherActor))
+	if (APlayerPawn_Polar* PolarRef = Cast<APlayerPawn_Polar>(OtherActor))
 	{
+		Polar = PolarRef;
+
 		TakePickup();
 		MakeTakingSound();
 		Destroy();
