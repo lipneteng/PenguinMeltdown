@@ -2,6 +2,8 @@
 
 #include "Penguin_Meltdown.h"
 #include "FunctionsLibrary.h"
+#include "Seal.h"
+#include "Iceland.h"
 #include "EnemyGenerator.h"
 
 

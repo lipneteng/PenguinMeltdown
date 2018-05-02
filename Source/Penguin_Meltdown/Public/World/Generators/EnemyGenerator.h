@@ -3,7 +3,6 @@
 #pragma once
 
 #include "GameFramework/Actor.h"
-#include "Seal.h"
 #include "EnemyGenerator.generated.h"
 
 UCLASS()
@@ -39,7 +38,7 @@ public:
 		float RandomStepY = 100.0f;
 
 	UPROPERTY(EditAnywhere)
-		TSubclassOf <ASeal> SealClass;
+		TSubclassOf <class ASeal> SealClass;
 
 	FTimerHandle SpawnTimerHandle;
 
@@ -58,5 +57,5 @@ private:
 
 	void SpawnEnemy();
 
-	AIceland* GetNearestIcelandToPolar();
+	class AIceland* GetNearestIcelandToPolar();
 };

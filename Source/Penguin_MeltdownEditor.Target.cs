@@ -5,21 +5,11 @@ using System.Collections.Generic;
 
 public class Penguin_MeltdownEditorTarget : TargetRules
 {
-	public Penguin_MeltdownEditorTarget(TargetInfo Target)
-	{
+	public Penguin_MeltdownEditorTarget(TargetInfo Target) : base(Target)
+    {
 		Type = TargetType.Editor;
-	}
 
-	//
-	// TargetRules interface.
-	//
+        ExtraModuleNames.Add("Penguin_Meltdown");
+    }
 
-	public override void SetupBinaries(
-		TargetInfo Target,
-		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
-		ref List<string> OutExtraModuleNames
-		)
-	{
-		OutExtraModuleNames.AddRange( new string[] { "Penguin_Meltdown" } );
-	}
 }

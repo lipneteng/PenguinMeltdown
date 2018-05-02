@@ -3,6 +3,7 @@
 #pragma once
 
 #include "BehaviorTree/BTService.h"
+#include "Penguin.h"
 #include "BTService_CheckPenguin.generated.h"
 
 UENUM(BlueprintType)

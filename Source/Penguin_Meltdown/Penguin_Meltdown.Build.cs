@@ -4,7 +4,7 @@ using UnrealBuildTool;
 
 public class Penguin_Meltdown : ModuleRules
 {
-	public Penguin_Meltdown(TargetInfo Target)
+      public Penguin_Meltdown(ReadOnlyTargetRules Target) : base (Target)
 	{
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" , "AIModule", "GameplayTasks" });
 

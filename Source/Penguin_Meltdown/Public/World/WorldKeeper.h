@@ -58,7 +58,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	//Pickup mod func
-	void AddScorePoints(EPenguinType PenguinsType);
+	void AddScorePoints(enum EPenguinType PenguinsType);
 
 	void SetPauseTime(float TimeUnderPause);
 

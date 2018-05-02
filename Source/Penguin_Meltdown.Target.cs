@@ -5,21 +5,10 @@ using System.Collections.Generic;
 
 public class Penguin_MeltdownTarget : TargetRules
 {
-	public Penguin_MeltdownTarget(TargetInfo Target)
-	{
+    public Penguin_MeltdownTarget(TargetInfo Target) : base(Target)
+    {
 		Type = TargetType.Game;
-	}
 
-	//
-	// TargetRules interface.
-	//
-
-	public override void SetupBinaries(
-		TargetInfo Target,
-		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
-		ref List<string> OutExtraModuleNames
-		)
-	{
-		OutExtraModuleNames.AddRange( new string[] { "Penguin_Meltdown" } );
+        ExtraModuleNames.Add("Penguin_Meltdown");
 	}
 }
